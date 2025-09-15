@@ -1,0 +1,201 @@
+@use "sass:color";
+@use "sass:math";
+
+// =============================
+// Variables
+// =============================
+$primary-color: #4361ee;
+$secondary-color: #2ecc71;
+$dark-color: #2d3748;
+$gray-color: #a0aec0;
+$light-color: #f8f9fa;
+$white-color: #ffffff;
+
+$font-stack: "Inter", sans-serif;
+$spacing: 1rem;
+$border-radius: 0.5rem;
+
+// =============================
+// Mixins
+// =============================
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin card {
+  background-color: $white-color;
+  border-radius: $border-radius;
+  padding: $spacing;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+// =============================
+// Global Styles
+// =============================
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: $font-stack;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: $dark-color;
+  background-color: $light-color;
+}
+
+.container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+// =============================
+// Header
+// =============================
+.header {
+  background-color: $primary-color;
+  color: $white-color;
+  padding: math.div($spacing, 2) 0;
+
+  .header-content {
+    @include flex-center;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 math.div($spacing, 2);
+
+    .logo {
+      font-size: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: math.div($spacing, 2);
+
+      i {
+        font-size: 2rem;
+      }
+    }
+
+    .nav {
+      display: flex;
+      gap: $spacing;
+
+      a {
+        color: $white-color;
+        text-decoration: none;
+        font-weight: 500;
+
+        &:hover {
+          color: $secondary-color;
+        }
+      }
+    }
+  }
+}
+
+// =============================
+// Hero Section
+// =============================
+.hero {
+  text-align: center;
+  padding: $spacing * 4 0;
+
+  .profile-pic {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: math.div($spacing, 2);
+    border: 5px solid $white-color;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  }
+
+  h1 {
+    font-size: 2rem;
+    margin-bottom: math.div($spacing, 2);
+  }
+
+  p {
+    color: $gray-color;
+    margin-bottom: $spacing;
+  }
+
+  .contact-links {
+    @include flex-center;
+    gap: math.div($spacing, 2);
+
+    a {
+      text-decoration: none;
+      color: $primary-color;
+      font-weight: 500;
+
+      i {
+        margin-right: math.div($spacing, 4);
+      }
+
+      &:hover {
+        color: $secondary-color;
+      }
+    }
+  }
+}
+
+// =============================
+// Sections (Education, Experience, Skills, Certificates, Portfolio)
+// =============================
+section {
+  padding: $spacing * 2 0;
+  text-align: center;
+
+  h2 {
+    font-size: 1.5rem;
+    margin-bottom: $spacing;
+  }
+
+  ul {
+    list-style: none;
+    li {
+      margin-bottom: math.div($spacing, 2);
+      color: $dark-color;
+    }
+  }
+}
+
+.skills-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: math.div($spacing, 2);
+
+  .skill {
+    @include card;
+  }
+}
+
+.projects-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: $spacing;
+
+  .project-card {
+    @include card;
+    width: 250px;
+  }
+}
+
+// =============================
+// Footer
+// =============================
+.footer {
+  background-color: $dark-color;
+  color: $white-color;
+  text-align: center;
+  padding: $spacing;
+  margin-top: auto;
+}
